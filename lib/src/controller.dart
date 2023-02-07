@@ -3,21 +3,25 @@ import 'dart:io';
 import 'package:watcher/src/watcher.dart';
 
 class Controller {
-  bool runned = false;
-  String path;
+  bool _compiling = false;
+  Process? _process;
+  Future<dynamic>? _errstream;
+  Future<dynamic>? _outstream;
+
   String script;
+  String rootPath;
   List<Watcher> watchers = [];
 
   late Directory root;
 
-  Controller(this.path, this.script) {
-    root = Directory(path);
+  Controller(this.rootPath, this.script) {
+    root = Directory(rootPath);
 
     if (!root.existsSync()) {
-      throw Exception('Directory "$path" is not exists');
+      throw Exception('Directory "$rootPath" is not exists');
     }
 
-    watchers.add(Watcher(path, changeHandler, false));
+    watchers.add(Watcher(rootPath, changeHandler, false));
 
     _scanRoot(debug: false);
     _runScript();
@@ -28,21 +32,42 @@ class Controller {
     _runScript();
   }
 
-  _runScript() {
-    if (!runned) {
-      runned = true;
+  _runScript() async {
+    if (!_compiling) {
+      _compiling = true;
 
-      print('Script runing...');
-      Process.run('dart', ['run', script]).then((result) {
-        stdout.write(result.stdout);
-        stderr.write(result.stderr);
+      File scriptFile = File(script);
 
-        runned = false;
-        print('Watching changes...');
-      }).onError((error, stackTrace) {
-        runned = false;
-        print('Watching changes...');
-      });
+      if (!scriptFile.existsSync()) {
+        throw Exception('Script "$script" is not exists');
+      }
+
+      if (_process != null && _process!.kill()) {        
+        print('Proccess (${_process!.pid}) is killed');
+      }
+
+      print('Starting script...');
+
+      if (_outstream != null) {
+        await _outstream;
+        await _errstream;
+      }
+
+      Process
+        .start('dart', ['run', script])
+        .then((result) {
+          print('Script started (pid=${result.pid}). Watching changes...');
+
+          _process = result;
+          _compiling = false;
+
+          _outstream = stdout.addStream(result.stdout);
+          _errstream = stderr.addStream(result.stderr);
+        })
+        .onError((error, stackTrace) {
+          _compiling = false;
+          print('Run script error ($error). Watching changes...');
+        });
     }
   }
 
