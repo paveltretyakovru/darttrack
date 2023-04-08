@@ -28,6 +28,12 @@ section {
   font-size: 30pt;
   align-items:center;
   letter-spacing: 7px;
+  flex-direction: column;
   justify-content: center;
   background-color: var(--primary);
+}
+
+.home__image {
+  margin-top: 15px;
+  border-radius: 13px;
 }

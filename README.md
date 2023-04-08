@@ -2,6 +2,8 @@
 
 Application to watch files changes and restart dart script.
 
+![Demo image](web_src/demo.gif "Demo")
+
 ## Usage
 ```bash
 darttrack ./lib ./bin/yourscript.dart
