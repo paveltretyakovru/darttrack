@@ -1,3 +1,5 @@
+/// Copyright © 2023 Pavel Tretyakov. All rights reserved.
+
 import 'controller.dart';
 
 /// Main function of the application

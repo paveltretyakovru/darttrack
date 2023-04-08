@@ -1,3 +1,5 @@
+/// Copyright © 2023 Pavel Tretyakov. All rights reserved.
+
 import 'dart:async';
 import 'dart:io';
 import 'types.dart';
