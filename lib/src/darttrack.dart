@@ -1,6 +1,6 @@
-import 'package:watcher/src/controller.dart';
+import 'controller.dart';
 
-void watch(String dir, String script) {
+void darttrack(String dir, String script) {
   try {
     Controller(dir, script);
   } on Exception catch (e) {

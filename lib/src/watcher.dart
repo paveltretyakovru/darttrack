@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
-
-import 'package:watcher/src/types.dart';
+import 'types.dart';
 
 /// Event types:
 /// 1 - create

@@ -1,6 +1,5 @@
 import 'dart:io';
-
-import 'package:watcher/src/watcher.dart';
+import 'watcher.dart';
 
 class Controller {
   bool _compiling = false;
@@ -42,7 +41,7 @@ class Controller {
         throw Exception('Script "$script" is not exists');
       }
 
-      if (_process != null && _process!.kill()) {        
+      if (_process != null && _process!.kill()) {
         print('Proccess (${_process!.pid}) is killed');
       }
 
@@ -53,21 +52,18 @@ class Controller {
         await _errstream;
       }
 
-      Process
-        .start('dart', ['run', script])
-        .then((result) {
-          print('Script started (pid=${result.pid}). Watching changes...');
+      Process.start('dart', ['run', script]).then((result) {
+        print('Script started (pid=${result.pid}). Watching changes...');
 
-          _process = result;
-          _compiling = false;
+        _process = result;
+        _compiling = false;
 
-          _outstream = stdout.addStream(result.stdout);
-          _errstream = stderr.addStream(result.stderr);
-        })
-        .onError((error, stackTrace) {
-          _compiling = false;
-          print('Run script error ($error). Watching changes...');
-        });
+        _outstream = stdout.addStream(result.stdout);
+        _errstream = stderr.addStream(result.stderr);
+      }).onError((error, stackTrace) {
+        _compiling = false;
+        print('Run script error ($error). Watching changes...');
+      });
     }
   }
 
