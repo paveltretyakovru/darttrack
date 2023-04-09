@@ -54,6 +54,32 @@
 <section class="desc markdown">
   <h1 id="darttrack">DartTrack</h1>
 <p>Application to watch files changes and restart dart script.</p>
+<p><img src="web_src/demo.gif" alt="Demo image" title="Demo"></p>
+<h2 id="installation">Installation</h2>
+<h3 id="with-dart-pub">With dart pub</h3>
+<p>You can use the application like a global cli application with dart pub uitilete</p>
+<pre class="language-bash"><code class="language-bash">dart pub global activate darttrack
+# or
+flutter pub global activate darttrack
+</code></pre>
+<h3 id="from-source">From source</h3>
+<p>Olso you can compile application from source</p>
+<pre class="language-bash"><code class="language-bash"># Clone sources
+git clone https://github.com/paveltretyakovru/darttrack.git
+cd darttrack
+
+# Compile it to executable file
+dart compile exe bin/darttrack.dart -o build/darttrack
+
+# Moving exe file to bin (you can move it to any PATH bin folder)
+# /usr/bin/ - work example, but need sudo access to move
+sudo mv build/darttrack /usr/bin/
+</code></pre>
+<h2 id="usage">Usage</h2>
+<pre class="language-bash"><code class="language-bash">darttrack ./lib ./bin/yourscript.dart
+</code></pre>
+<p>It's run <em>./bin/yourscript.dart</em> script and start watching <em>./lib</em> diretory to changes.
+If files in the directory is changed, script will be restarted</p>
 </section>
 
 
@@ -100,7 +126,7 @@
 <footer>
   <span class="no-break">
     darttrack
-      1.0.0
+      1.0.1
   </span>
 
   
