@@ -1,3 +1,6 @@
+## 1.2.1
+- Fixed #7. Script is not restarting without --watch argument
+
 ## 1.2.0
 - Added argument --exec to call custom command on source changes
 ```bash

@@ -92,7 +92,7 @@ class Controller {
     if (argenius.named['script'] != null) {
       script = argenius.named['script'];
     } else if (argenius.ordered.asMap().containsKey(1)) {
-      argenius.ordered[1];
+      script = argenius.ordered[1];
     }
   }
 
