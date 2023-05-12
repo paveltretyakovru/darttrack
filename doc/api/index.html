@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="generator" content="made with love by dartdoc 6.2.1">
+  <meta name="generator" content="made with love by dartdoc 6.2.2">
   <meta name="description" content="darttrack API docs, for the Dart programming language.">
   <title>darttrack - Dart API docs</title>
 
@@ -57,13 +57,13 @@
 <p><img src="web_src/demo.gif" alt="Demo image" title="Demo"></p>
 <h2 id="installation">Installation</h2>
 <h3 id="with-dart-pub">With dart pub</h3>
-<p>You can use the application like a global cli application with dart pub uitilete</p>
+<p>You can use it like a global application</p>
 <pre class="language-bash"><code class="language-bash">dart pub global activate darttrack
 # or
 flutter pub global activate darttrack
 </code></pre>
 <h3 id="from-source">From source</h3>
-<p>Olso you can compile application from source</p>
+<p>Also you can compile application from source</p>
 <pre class="language-bash"><code class="language-bash"># Clone sources
 git clone https://github.com/paveltretyakovru/darttrack.git
 cd darttrack
@@ -76,10 +76,22 @@ dart compile exe bin/darttrack.dart -o build/darttrack
 sudo mv build/darttrack /usr/bin/
 </code></pre>
 <h2 id="usage">Usage</h2>
+<h3 id="run-dart-script-and-restart-it-yourscriptdart-when-folder-lib-changed">Run dart script and restart it (yourscript.dart) when folder (lib) changed</h3>
+<h4 id="usage-variants-of-the-case">Usage variants of the case:</h4>
 <pre class="language-bash"><code class="language-bash">darttrack ./lib ./bin/yourscript.dart
 </code></pre>
-<p>It's run <em>./bin/yourscript.dart</em> script and start watching <em>./lib</em> diretory to changes.
-If files in the directory is changed, script will be restarted</p>
+<pre class="language-bash"><code class="language-bash">darttrack --watch ./lib ./bin/yourscript.dart
+</code></pre>
+<pre class="language-bash"><code class="language-bash">darttrack --watch ./lib --script ./bin/yourscript.dart
+</code></pre>
+<pre class="language-bash"><code class="language-bash">darttrack ./lib --script ./bin/yourscript.dart
+</code></pre>
+<h3 id="run-custom-command-and-restart-it-echo-test-when-folder-lib-changed">Run custom command and restart it (echo test) when folder (lib) changed</h3>
+<h4 id="usage-variants-of-the-case-2">Usage variants of the case:</h4>
+<pre class="language-bash"><code class="language-bash">darttrack ./lib --exec "dart test"
+</code></pre>
+<pre class="language-bash"><code class="language-bash">darttrack --watch ./lib --exec "dart test"
+</code></pre>
 </section>
 
 
@@ -126,7 +138,7 @@ If files in the directory is changed, script will be restarted</p>
 <footer>
   <span class="no-break">
     darttrack
-      1.0.1
+      1.2.0
   </span>
 
   
