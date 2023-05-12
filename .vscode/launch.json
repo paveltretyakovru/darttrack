@@ -5,11 +5,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "watcher",
+      "name": "darttrack",
       "request": "launch",
       "type": "dart",
-      "program": "bin/watcher.dart",
-      "args": ["lib", "bin/test.dart"]
+      "program": "bin/darttrack.dart",
+      "args": ["lib", "bin/darttrack.dart"]
     }
   ]
 }

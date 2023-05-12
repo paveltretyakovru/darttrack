@@ -1,6 +1,6 @@
 name: darttrack
 description: Application to watch files changes and restart dart application
-version: 1.0.1
+version: 1.2.0
 homepage: https://paveltretyakovru.github.io/darttrack/
 repository: https://github.com/paveltretyakovru/darttrack
 
@@ -13,3 +13,5 @@ dev_dependencies:
 
 executables:
   darttrack: darttrack
+dependencies:
+  argenius: ^1.0.0

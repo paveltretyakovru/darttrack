@@ -7,7 +7,7 @@ Application to watch files changes and restart dart script.
 ## Installation
 
 ### With dart pub
-You can use the application like a global cli application with dart pub uitilete
+You can use it like a global application
 ```bash
 dart pub global activate darttrack
 # or
@@ -15,7 +15,7 @@ flutter pub global activate darttrack
 ```
 
 ### From source
-Olso you can compile application from source
+Also you can compile application from source
 
 ```bash
 # Clone sources
@@ -31,9 +31,32 @@ sudo mv build/darttrack /usr/bin/
 ```
 
 ## Usage
+
+### Run dart script and restart it (yourscript.dart) when folder (lib) changed
+
+#### Usage variants of the case:
 ```bash
 darttrack ./lib ./bin/yourscript.dart
 ```
 
-It's run *./bin/yourscript.dart* script and start watching *./lib* diretory to changes.
-If files in the directory is changed, script will be restarted
+```bash
+darttrack --watch ./lib ./bin/yourscript.dart
+```
+
+```bash
+darttrack --watch ./lib --script ./bin/yourscript.dart
+```
+
+```bash
+darttrack ./lib --script ./bin/yourscript.dart
+```
+
+### Run custom command and restart it (echo test) when folder (lib) changed
+#### Usage variants of the case:
+```bash
+darttrack ./lib --exec "dart test"
+```
+
+```bash
+darttrack --watch ./lib --exec "dart test"
+```
