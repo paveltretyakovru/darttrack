@@ -1,0 +1,1 @@
+dart compile exe bin/darttrack.dart -o build/darttrack
