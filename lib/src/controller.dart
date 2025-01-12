@@ -117,6 +117,11 @@ class Controller {
         _process = result;
         _compiling = false;
 
+        // For dark days
+        // result.stdout.listen((List<int> data) {
+        //   print('Data ${utf8.decode(data)}');
+        // });
+
         _outstream = stdout.addStream(result.stdout);
         _errstream = stderr.addStream(result.stderr);
       }).onError((error, stackTrace) {
